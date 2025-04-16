@@ -1,0 +1,68 @@
+.view-subcategory-wrapper {
+    padding: 2rem;
+    background-color: #f5f7fa;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .view-subcategory-wrapper h2 {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .view-subcategory-wrapper .card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+  }
+  
+  .view-subcategory-wrapper .card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .view-subcategory-wrapper .card-img-top {
+    height: 220px;
+    object-fit: cover;
+  }
+  
+  .view-subcategory-wrapper .card-body {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .view-subcategory-wrapper .card-body h5 {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 0.5rem;
+  }
+  
+  .view-subcategory-wrapper .card-body p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+  }
+  
+  .view-subcategory-wrapper .btn-primary {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .view-subcategory-wrapper .btn-primary:hover {
+    background: linear-gradient(135deg, #5dade2, #2e86c1);
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
