@@ -27,3 +27,8 @@ app.use("/",ServiceRoute)
 app.listen(PORT,()=>{
     console.log(colors.green(`server is running on`)  +colors.red (` ${PORT}`))
 })
+app.get("/", (req, res) => {
+    res.send("Backend is running successfully!");
+  });
+
+
