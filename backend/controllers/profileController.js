@@ -2,25 +2,63 @@
 const ProfileModel = require("../model/ProfileModel");
 
 // ✅ Create Profile
+// const createProfile = async (req, res) => {
+//   try {
+//     const {  pic, user} = req.body;
+//     const userEmail=req.user.email;
+
+//     if ( !pic ) {
+//       return res.status(400).json({ message: "Profile picture is  required" });
+//     }
+
+//     let profile = await ProfileModel.findOne({ email:userEmail });
+//     if (profile) {
+//       return res.status(400).json({ message: "Profile already exists!" });
+//     }
+
+//     profile = new ProfileModel({ email:userEmail, pic, user});
+//     await profile.save();
+
+//     res.status(201).json({ message: "Profile created successfully", profile });
+//   } catch (error) {
+//     res.status(500).json({ message: "Server error", error: error.message });
+//   }
+// };
+
+
 const createProfile = async (req, res) => {
   try {
-    const {  pic, user} = req.body;
-    const userEmail=req.user.email;
+    const { pic, user } = req.body;
+    const userEmail = req.user.email;
 
-    if ( !pic ) {
-      return res.status(400).json({ message: "Profile picture is  required" });
+    // Check if profile picture is present
+    if (!pic) {
+      return res.status(400).json({ message: "Profile picture is required" });
     }
 
-    let profile = await ProfileModel.findOne({ email:userEmail });
+    // Validate user ID
+    if (!user) {
+      return res.status(400).json({ message: "User ID is missing" });
+    }
+
+    // Check if profile already exists
+    let profile = await ProfileModel.findOne({ email: userEmail });
     if (profile) {
       return res.status(400).json({ message: "Profile already exists!" });
     }
 
-    profile = new ProfileModel({ email:userEmail, pic, user});
+    // Create new profile
+    profile = new ProfileModel({
+      email: userEmail,
+      pic,
+      user, // This should be user ID string
+    });
+
     await profile.save();
 
     res.status(201).json({ message: "Profile created successfully", profile });
   } catch (error) {
+    console.error("Error creating profile:", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
@@ -49,23 +87,27 @@ const updateProfile = async (req, res) => {
 };
 
 // ✅ Get Single Profile
+
+
 const getProfile = async (req, res) => {
   try {
-    const userEmail=req.user.email;
+    console.log("🔍 req.user:", req.user); // 🔴 Add this
 
+    const userEmail = req.user.email;
 
-    const profile = await ProfileModel.findOne({ email:userEmail });
+    const profile = await ProfileModel.findOne({ email: userEmail });
 
     if (!profile) {
       return res.status(404).json({ message: "Profile not found" });
     }
 
-    res.status(200).json({profile:profile.pic});
+    res.status(200).json({ profile: profile.pic });
   } catch (error) {
-    console.log(error)
+    console.log("❌ Error in getProfile:", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
 
 // ✅ Get All Profiles
 const getAllProfiles = async (req, res) => {

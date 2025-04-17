@@ -118,4 +118,9 @@
     background-color: #007bff;
     color: white;
   }
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
   

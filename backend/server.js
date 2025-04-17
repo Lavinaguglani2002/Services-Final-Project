@@ -18,7 +18,7 @@ require('dotenv').config();
 connectdb()
 
 app.use("/",userRoute)
-app.use("/",profileRoute)
+app.use("/api",profileRoute)
 app.use("/",blogRoute)
 app.use("/",ServiceRoute)
 

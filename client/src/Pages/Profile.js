@@ -132,7 +132,7 @@ const Profile = () => {
     console.log(token);
     try {
       const response = await api.post(
-        "/get",
+        "/getprofilepic",
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -86,55 +86,46 @@ useEffect(() => {
 
 
 
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log("smallcategorytitle:", smallSubCategoryTitle);
-    console.log("subcategoryname:", selectedSubCategory);
-    console.log("photourl:", photourl);
-    console.log("category name:", selectedCategory);
-    console.log("content:", content);
-
-  if (!selectedCategory || !selectedSubCategory || !smallSubCategoryTitle || !photourl || !content || !price) {
-    alert("All fields are required");
-    return;
-  }
-
-  setLoading(true); // ✅ Loading start kar diya
-
-
-  try {
-    const response = await api.post("/insertsmallsubcategory", {
-      categoryname: selectedCategory,
-      subcategoryname: selectedSubCategory,
-      smallsubcategoryname: smallSubCategoryTitle,
-      smallsubcategoryimage: photourl,
-      smallsubcategorycontent: content,
-      price: price
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
   
-  const data = await response.json();
-
-    if (response.ok) {
-      alert("Small-Sub-Category added successfully");
-      setSelectedCategory("");
-      setSelectedSubCategory("");
-      setSmallSubCategoryTitle("");
-      setPhoto("");
-      setPhotourl("");
-      setContent("");
-      setPrice("")
-    } else {
-      alert("Error: " + data.message);
+    if (!selectedCategory || !selectedSubCategory || !smallSubCategoryTitle || !photourl || !content || !price) {
+      alert("All fields are required");
+      return;
     }
-  } catch (error) {
-    console.error("Error submitting small-sub-category:", error);
-    alert("Failed to submit small-sub-category. Please try again.");
-  } finally {
-    setLoading(false); // ✅ Request complete hone ke baad loading hata diya
-  }
-};
-
+  
+    setLoading(true);
+  
+    try {
+      const response = await api.post("/insertsmallsubcategory", {
+        categoryname: selectedCategory,
+        subcategoryname: selectedSubCategory,
+        smallsubcategoryname: smallSubCategoryTitle,
+        smallsubcategoryimage: photourl,
+        smallsubcategorycontent: content,
+        price: price,
+      });
+  
+      if (response.status === 201) {
+        alert("Small-Sub-Category added successfully");
+        setSelectedCategory("");
+        setSelectedSubCategory("");
+        setSmallSubCategoryTitle("");
+        setPhoto("");
+        setPhotourl("");
+        setContent("");
+        setPrice("");
+      } else {
+        alert("Error: " + response.data.message);
+      }
+    } catch (error) {
+      console.error("Error submitting small-sub-category:", error);
+      alert("Failed to submit small-sub-category. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
 
   return (

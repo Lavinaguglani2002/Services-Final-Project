@@ -62,7 +62,7 @@ deliveryDate:{
 },
       deliveryStatus:{
         type:String,
-        enum:["Pending","Shipped","Delivered"],
+        enum:["Pending","Shipped","Delivered","Rejected"],
         default:"Pending"
       },
       orderDate:{

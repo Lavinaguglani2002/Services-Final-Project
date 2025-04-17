@@ -11,6 +11,9 @@ const AdminLayout = () => {
   const [openDashboard, setOpenDashboard] = useState(false);
   const [openCategories, setOpenCategories] = useState(false);
   const [openBlogs, setOpenBlogs] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+
 
   const defaultphoto =
     "https://png.pngatree.com/png-vector/20231019/ourmid/pngtree-user-profile-avatar-png-image_10211467.png";
@@ -41,28 +44,9 @@ const AdminLayout = () => {
     const token = localStorage.getItem("TOKEN");
 
     try {
-  //     const response = await fetch("/get", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify({ email: email }),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       if (data.profile) {
-  //         setPic(data.profile);
-  //         localStorage.setItem("profilePic", data.profile);
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching profile picture:", error);
-  //   }
-  // };
+  
   const response = await api.post(
-    "/get", 
+    "/getprofilepic", 
     { email: email },
     {
       headers: {
@@ -179,51 +163,26 @@ const AdminLayout = () => {
 
         <hr />
 
-        <div className="dropdown">
-          <div
-            className="d-flex align-items-center text-white dropdown-toggle"
-            id="dropdownUser1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style={{ cursor: "pointer" }}
-          >
-            <img
-              src={pic || defaultphoto}
-              alt="User"
-              width="40"
-              height="40"
-              className="rounded-circle me-2"
-            />
-            <span>{item.name}</span>
-          </div>
-          <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li>
-              <a className="dropdown-item" href="#">
-                New project...
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Settings
-              </a>
-            </li>
-            <li>
-              <Link className="dropdown-item" to="/profilepagee">
-                Profile
-              </Link>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <a className="dropdown-item" onClick={handleSignOut}>
-                Sign out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+<div class="dropdown align-items-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+{item.name}
+  </button>
+  <ul class="dropdown-menu">
+  <img
+      src={pic || defaultphoto}
+      alt="User"
+      width="40"
+      height="40"
+      className="rounded-circle me-2"
+    />
+    <span>{item.name}</span>
 
+    <li><a class="dropdown-item" href="/profilepagee">Profile</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" onClick={handleSignOut}>Sign Out</a></li>
+  </ul>
+</div>
+</div>
       <div
         className="flex-grow-1 p-3"
         style={{ backgroundColor: "#f8f9fa", borderRadius: "10px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
