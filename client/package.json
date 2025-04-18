@@ -1,6 +1,8 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "packageManager": "npm@9.8.1",
+
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.20.6",
@@ -25,7 +27,10 @@
     "serve": "^14.2.4",
     "swiper": "^11.2.5",
     "url": "^0.11.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-scripts": "^5.0.1"
+
+
   },
   "scripts": {
     "start": "react-scripts start",
@@ -53,8 +58,5 @@
   },
   "engines": {
     "node": "18.x"
-  },
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
   }
 }

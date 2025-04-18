@@ -1,0 +1,7 @@
+buildCommand: npm install && npm run build
+startCommand: npx serve -s build
+build:
+  env:
+    - key: NODE_VERSION
+      value: 18
+  shell: bash
