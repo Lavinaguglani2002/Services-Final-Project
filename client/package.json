@@ -21,20 +21,18 @@
     "react-dom": "^18.0.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.2.0",
-    "react-scripts": "^5.0.1",
     "react-simple-captcha": "^9.3.1",
     "serve": "^14.2.4",
     "swiper": "^11.2.5",
     "url": "^0.11.4",
     "web-vitals": "^2.1.4"
   },
-
-"scripts": {
-  "start": "serve -s build",
-  "build": "react-scripts build"
-}
-,
-
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -55,5 +53,8 @@
   },
   "engines": {
     "node": "18.x"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
