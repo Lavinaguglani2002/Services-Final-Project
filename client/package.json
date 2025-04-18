@@ -21,7 +21,6 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.2.0",
-    "react-scripts": "^5.0.1",
     "react-simple-captcha": "^9.3.1",
     "swiper": "^11.2.5",
     "url": "^0.11.4",
@@ -43,20 +42,25 @@
     "zlib": "browserify-zlib",
     "url": "url"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ],
-    "engines": {
-  "node": "18.x"
-}
 
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+},
+"engines": {
+  "node": "18.x"
+},
+
+
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
