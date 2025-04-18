@@ -5,7 +5,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../axios';
-import Slider from '../components/Slider';
 
 const Dashboard = () => {
   const [userCount, setUserCount] = useState(0);
@@ -102,7 +101,6 @@ const Dashboard = () => {
         </div>
 
       </div>
-      <Slider/>
 
     </div>
   );

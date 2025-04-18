@@ -11,6 +11,7 @@
     "axios": "^1.8.1",
     "bootstrap": "^5.3.3",
     "browserify-zlib": "^0.2.0",
+    "build": "^0.1.4",
     "firebase": "^11.4.0",
     "framer-motion": "^12.6.5",
     "lucide-react": "^0.483.0",
@@ -22,6 +23,8 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.2.0",
     "react-simple-captcha": "^9.3.1",
+    "serve": "^14.2.4",
+    "server": "^1.0.41",
     "swiper": "^11.2.5",
     "url": "^0.11.4",
     "web-vitals": "^2.1.4"
@@ -42,24 +45,21 @@
     "zlib": "browserify-zlib",
     "url": "url"
   },
-
-"browserslist": {
-  "production": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ],
-  "development": [
-    "last 1 chrome version",
-    "last 1 firefox version",
-    "last 1 safari version"
-  ]
-},
-"engines": {
-  "node": "18.x"
-},
-
-
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": "18.x"
+  },
   "devDependencies": {
     "react-scripts": "^5.0.1"
   }
