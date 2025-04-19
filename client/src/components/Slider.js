@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./slider.css";
+import "./Slider.css";
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
