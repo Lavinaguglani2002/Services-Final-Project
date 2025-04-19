@@ -99,7 +99,7 @@ const UserDashboard = () => {
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
               <span>
-                <FaCog className="me-2" /> Settings
+                <FaCog className="me-2" /> Blogs
               </span>
               <FaChevronDown
                 style={{
@@ -119,7 +119,7 @@ const UserDashboard = () => {
                 }}
               >
                 <Link
-                  to="/settings/account"
+                  to="/userblog"
                   style={{
                     display: "block",
                     color: "white",
@@ -131,10 +131,9 @@ const UserDashboard = () => {
                   onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#343a40")}
                   onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
                 >
-                  Account
-                </Link>
+Blogs                </Link>
                 <Link
-                  to="/settings/security"
+                  to="/getuserblog"
                   style={{
                     display: "block",
                     color: "white",
@@ -146,30 +145,33 @@ const UserDashboard = () => {
                   onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#343a40")}
                   onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
                 >
-                  Security
+                  GetBlogs
                 </Link>
               </div>
             )}
           </div>
 
-          <Link
-            to="/login"
-            onClick={handlelogout}
-            style={{
-              display: "block",
-              color: "white",
-              padding: "10px 15px",
-              borderRadius: "8px",
-              textDecoration: "none",
-              fontWeight: "500",
-              marginTop: "1rem",
-              transition: "background-color 0.3s",
-            }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#343a40")}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-          >
-            <FaSignOutAlt className="me-2" /> Logout
-          </Link>
+
+          <div
+  onClick={handlelogout}
+  style={{
+    display: "block",
+    color: "white",
+    padding: "10px 15px",
+    borderRadius: "8px",
+    textDecoration: "none",
+    fontWeight: "500",
+    marginTop: "1rem",
+    cursor: "pointer",
+    transition: "background-color 0.3s",
+  }}
+  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#343a40")}
+  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+>
+  <FaSignOutAlt className="me-2" /> Logout
+</div>
+
+
         </nav>
       </div>
 

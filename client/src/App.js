@@ -38,6 +38,8 @@ import AboutUs from "./components/About";
 import ContactUs from "./components/Contact";
 import Surveyform from "./components/Surveyform";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import UserBlogs from "./components/UserBlogs";
+import GetUserBlogs from "./components/Getuserblogs";
 
 
 function App() {
@@ -64,6 +66,8 @@ function App() {
           <Route path="about" element={<AboutUs />} />
           <Route path="contact" element={<ContactUs />} />
           <Route path="survey" element={<Surveyform/>} />
+
+          
 
 
 
@@ -96,6 +100,9 @@ function App() {
 
         {/* Protected User Dashboard */}
         <Route path="/userdashboard" element={<PrivateRoute><UserDashboard /></PrivateRoute>} />
+        <Route path="/userblog" element={<UserBlogs/>} />
+
+        <Route path="/getuserblog" element={<GetUserBlogs/>} />
 
       </Routes>
     </BrowserRouter>

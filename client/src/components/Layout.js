@@ -62,13 +62,8 @@ const Layout = () => {
 
 
   const handleLogout = () => {
-    localStorage.removeItem("USER");
-    localStorage.removeItem("TOKEN");
-    localStorage.removeItem("EMAIL");
-    localStorage.removeItem("Name");
-    setUsername(null);
-    setUserrole(null);
-    setCartCount(0)
+    localStorage.clear()
+
     navigate("/login");
   };
 

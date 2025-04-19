@@ -1,15 +1,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Addtocart.css";
@@ -18,7 +9,7 @@ import api from "../axios";
 const Addtocart = () => {
   const [cart, setCart] = useState([]);
   const [cartcount, setCartcount] = useState(0);
-  const [orderplaced, setorderplaced] = useState(false);
+  const [orderplaced, setOrderPlaced] = useState(false);
   const [deliveryType, setDeliveryType] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -28,22 +19,26 @@ const Addtocart = () => {
   const navigate = useNavigate();
   const email = localStorage.getItem("EMAIL") || "guest";
 
+  // Ensure the user is logged in and is not an admin
   useEffect(() => {
     const user = localStorage.getItem("USER");
     const role = localStorage.getItem("Role");
 
-    if (!user || (role !== "user" && role !== "admin")) {
+    if (!user || role === "admin") {
+      console.log("Role in localStorage:", role);  // Debugging: Check the role
       alert("Access denied! Please login as a valid user.");
       navigate("/login");
     }
   }, [navigate]);
 
+  // Load cart from localStorage on initial render
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem(`cart_${email}`)) || [];
     setCart(storedCart);
     setCartcount(storedCart.length);
   }, [email]);
 
+  // Function to update cart state and localStorage
   const updateCart = (updatedCart) => {
     setCart(updatedCart);
     setCartcount(updatedCart.length);
@@ -52,6 +47,7 @@ const Addtocart = () => {
     window.dispatchEvent(new Event("storage"));
   };
 
+  // Function to increase item quantity
   const handleIncreaseQuantity = (index) => {
     const updatedCart = cart.map((item, i) =>
       i === index
@@ -65,6 +61,7 @@ const Addtocart = () => {
     updateCart(updatedCart);
   };
 
+  // Function to decrease item quantity
   const handleDecreaseQuantity = (index) => {
     const updatedCart = cart
       .map((item, i) => {
@@ -83,18 +80,22 @@ const Addtocart = () => {
     updateCart(updatedCart);
   };
 
+  // Function to remove item from cart
   const handleRemoveItem = (index) => {
     const updatedCart = cart.filter((_, i) => i !== index);
     updateCart(updatedCart);
   };
 
+  // Calculate total amount of the cart
   const totalAmount = cart
     .reduce((total, item) => total + parseFloat(item.price), 0)
     .toFixed(2);
 
+  // Add extra charges for fast delivery
   const extracharge = deliveryType === "Fast" ? 50 : 0;
   const totalAmountWithDelivery = (parseFloat(totalAmount) + extracharge).toFixed(2);
 
+  // Handle placing the order
   const handlePlaceOrder = async () => {
     const userId = localStorage.getItem("USER");
 
@@ -121,7 +122,6 @@ const Addtocart = () => {
         userEmail: email,
       });
       const data = response.data;
-      
 
       if (response.status === 201) {
         alert(data.message);
@@ -129,7 +129,7 @@ const Addtocart = () => {
         localStorage.setItem("cartcount", 0);
         setCart([]);
         setCartcount(0);
-        setorderplaced(true);
+        setOrderPlaced(true);
         window.dispatchEvent(new Event("storage"));
       } else {
         alert(data.message || "Order not placed");
@@ -206,13 +206,8 @@ const Addtocart = () => {
               <h5>Order Summary</h5>
               <ul className="list-group list-group-flush">
                 {cart.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="list-group-item d-flex justify-content-between"
-                  >
-                    <span>
-                      {item.name} × {item.quantity}
-                    </span>
+                  <li key={idx} className="list-group-item d-flex justify-content-between">
+                    <span>{item.name} × {item.quantity}</span>
                     <span>₹{item.price}</span>
                   </li>
                 ))}
